@@ -1,0 +1,37 @@
+[project]
+name = "latent-foresight"
+version = "0.1.0"
+description = "Latent-Foresight: End-to-End Learning Predictable Representations for Latent World Models"
+readme = "README.md"
+requires-python = ">=3.10,<3.12"
+dependencies = [
+    "torch==2.6.0",
+    "torchvision==0.21.0",
+    "pytorch-lightning==2.6.6",
+    "torchmetrics",
+    "einops",
+    "nuscenes-devkit",
+    "diffusers",
+    "huggingface-hub",
+    "numpy<2",
+    "pillow",
+    "scikit-learn",
+    "matplotlib",
+    "opencv-python-headless",
+    "tensorboard",
+    "tqdm",
+]
+
+[tool.uv]
+package = false
+environments = ["sys_platform == 'linux'"]
+
+# PyTorch CUDA 12.6 wheels
+[[tool.uv.index]]
+name = "pytorch-cu126"
+url = "https://download.pytorch.org/whl/cu126"
+explicit = true
+
+[tool.uv.sources]
+torch = { index = "pytorch-cu126" }
+torchvision = { index = "pytorch-cu126" }
